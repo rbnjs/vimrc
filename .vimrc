@@ -4,8 +4,6 @@ filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -24,6 +22,12 @@ Plugin 'scrooloose/syntastic'
 
 " NERDTree a must have
 Plugin 'scrooloose/nerdtree'
+
+" Standard library for vim-sessions
+Plugin 'xolox/vim-misc'
+
+" Vim sessions on steroids.
+Plugin 'xolox/vim-session'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -44,7 +48,7 @@ let maplocalleader = ","
 let mapleader = "'"
 
 " Mappings
-noremap <F8> :NERDTreeToggle<CR>
+noremap <F6> :NERDTreeToggle<CR>
 inoremap <c-u> <esc>vwiU<esc>i
 noremap <leader>ew :vsplit $MYVIMRC<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
