@@ -59,6 +59,7 @@ noremap <F6> :NERDTreeToggle<CR>
 inoremap <c-u> <esc>vwiU<esc>i
 noremap <leader>ew :vsplit $MYVIMRC<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
+noremap <leader>y <esc>v$y
 
 " Autocommands
 
@@ -69,6 +70,10 @@ augroup filetype_view
   autocmd BufNewFile,BufRead *.prawn set filetype=ruby 
 augroup END
 " }}}
+
+augroup ruby_files
+  autocmd FileType ruby noremap <leader>c <esc>i#
+augroup END
 
 " Color column.
 if exists('+colorcolumn')
