@@ -39,12 +39,15 @@ set mouse=a
 set number
 syntax enable
 set background=dark
+set hlsearch            " highlight matches
+
 colorscheme desert
+
 let maplocalleader = ","
 let mapleader = "'"
 
 " Mappings
-noremap <F8> :NERDTreeToggle<CR>
+noremap <F6> :NERDTreeToggle<CR>
 inoremap <c-u> <esc>vwiU<esc>i
 noremap <leader>ew :vsplit $MYVIMRC<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
@@ -56,3 +59,10 @@ augroup filetype_view
   autocmd BufNewFile,BufRead *.prawn set filetype=ruby 
 augroup END
 
+" Color column. This is only when working in Akdemia.
+if exists('+colorcolumn')
+  set colorcolumn=80
+  highlight ColorColumn ctermbg=7
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
