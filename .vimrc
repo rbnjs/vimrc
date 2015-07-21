@@ -4,8 +4,6 @@ filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -25,16 +23,25 @@ Plugin 'scrooloose/syntastic'
 " NERDTree a must have
 Plugin 'scrooloose/nerdtree'
 
+" Standard library for vim-sessions
+Plugin 'xolox/vim-misc'
+
+" Vim sessions on steroids.
+Plugin 'xolox/vim-session'
+
+" CoffeeScript with vim
+Plugin 'kchmck/vim-coffee-script'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 syntax on
-setlocal expandtab
-setlocal shiftwidth=2
-setlocal softtabstop=2
-setlocal autoindent
-setlocal smartindent
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set smartindent
 set mouse=a
 set number
 syntax enable
@@ -45,6 +52,7 @@ colorscheme desert
 
 let maplocalleader = ","
 let mapleader = "'"
+let g:session_autosave = 'no'
 
 " Mappings
 noremap <F6> :NERDTreeToggle<CR>
@@ -53,13 +61,16 @@ noremap <leader>ew :vsplit $MYVIMRC<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
 
 " Autocommands
+
+" We control how we see several documents with these autocommands ---- {{{
 augroup filetype_view
   autocmd BufNewFile,BufRead *.html setlocal nowrap
   autocmd BufNewFile,BufRead *.haml setlocal nowrap
   autocmd BufNewFile,BufRead *.prawn set filetype=ruby 
 augroup END
+" }}}
 
-" Color column. This is only when working in Akdemia.
+" Color column.
 if exists('+colorcolumn')
   set colorcolumn=80
   highlight ColorColumn ctermbg=7
