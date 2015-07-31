@@ -8,6 +8,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Search stuff 
+Plugin 'mileszs/ack.vim'
+
 " Plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
@@ -16,6 +19,9 @@ Plugin 'tpope/vim-rails'
 
 " It completes the ends in Ruby
 Plugin 'tpope/vim-endwise'
+
+" Vim with rvm
+Plugin 'tpope/vim-rvm'
 
 " Checks for syntactics errors
 Plugin 'scrooloose/syntastic'
@@ -31,6 +37,8 @@ Plugin 'xolox/vim-session'
 
 " CoffeeScript with vim
 Plugin 'kchmck/vim-coffee-script'
+
+Plugin 'szw/vim-tags'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,16 +58,16 @@ set hlsearch            " highlight matches
 
 colorscheme desert
 
-let maplocalleader = ","
-let mapleader = "'"
+let mapleader = ","
 let g:session_autosave = 'no'
 
 " Mappings
 noremap <F6> :NERDTreeToggle<CR>
+noremap <F5> :NERDTree<CR>
 inoremap <c-u> <esc>vwiU<esc>i
 noremap <leader>ew :vsplit $MYVIMRC<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
-noremap <leader>y <esc>v$y
+noremap <leader>y <esc>v$hy
 
 " Autocommands
 
@@ -68,11 +76,12 @@ augroup filetype_view
   autocmd BufNewFile,BufRead *.html setlocal nowrap
   autocmd BufNewFile,BufRead *.haml setlocal nowrap
   autocmd BufNewFile,BufRead *.prawn set filetype=ruby 
+  autocmd BufNewFile,BufRead *.jbuilder set filetype=ruby 
 augroup END
 " }}}
 
 augroup ruby_files
-  autocmd FileType ruby noremap <leader>c <esc>i#
+  autocmd FileType ruby noremap <leader>c <esc>i#<esc>
 augroup END
 
 " Color column.
