@@ -44,9 +44,29 @@ Plugin 'szw/vim-tags'
 " Autoclose [], {}, ...
 Plugin 'Townk/vim-autoclose'
 
+" Snippets Engine for Vim.
+Plugin 'SirVer/ultisnips'
+
+" Snippets 
+Plugin 'honza/vim-snippets'
+
+" JavaScript bundle for Vim
+Plugin 'pangloss/vim-javascript'
+
+" JSX for Vim
+Plugin 'mxw/vim-jsx'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Trigger configuration. 
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window
+let g:UltiSnipsEditSplit="vertical"
 
 syntax on
 set expandtab
@@ -55,7 +75,7 @@ set softtabstop=2
 set autoindent
 set smartindent
 set mouse=a
-set number
+set relativenumber
 syntax enable
 set background=dark
 set hlsearch            " highlight matches
@@ -70,6 +90,7 @@ noremap <F6> :NERDTreeToggle<CR>
 noremap <F5> :NERDTree<CR>
 inoremap <c-u> <esc>vwiU<esc>i
 noremap <leader>ew :vsplit $MYVIMRC<cr>
+noremap <leader>us :UltiSnipsEdit<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
 noremap <leader>y <esc>v$hy
 
