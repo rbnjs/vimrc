@@ -89,6 +89,8 @@ let g:session_autosave = 'no'
 noremap <F6> :NERDTreeToggle<CR>
 noremap <F5> :NERDTree<CR>
 inoremap <c-u> <esc>vwiU<esc>i
+" Changes an entire string. It's pretty cool.
+noremap <leader>cs <esc>v/"\\|'<cr>hc
 noremap <leader>ew :vsplit $MYVIMRC<cr>
 noremap <leader>us :UltiSnipsEdit<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
