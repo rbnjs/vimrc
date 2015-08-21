@@ -59,6 +59,12 @@ Plugin 'mxw/vim-jsx'
 " Less Vim
 Plugin 'groenewege/vim-less'
 
+" Status bar for vim
+Plugin 'bling/vim-airline'
+
+" Shows a window with tags
+Plugin 'majutsushi/tagbar'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,9 +73,12 @@ filetype plugin indent on    " required
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window
+" Let :UltiSnipsEdit to split the window
 let g:UltiSnipsEditSplit="vertical"
+
+" Airline Configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='raven'
 
 syntax on
 set expandtab
@@ -78,10 +87,11 @@ set softtabstop=2
 set autoindent
 set smartindent
 set mouse=a
-set relativenumber
+set number
 syntax enable
 set background=dark
 set hlsearch            " highlight matches
+set laststatus=2
 
 colorscheme desert
 
@@ -98,6 +108,9 @@ noremap <leader>ew :vsplit $MYVIMRC<cr>
 noremap <leader>us :UltiSnipsEdit<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
 noremap <leader>y <esc>v$hy
+noremap <leader>bn :bnext<cr>
+noremap <leader>bp :bprevious<cr>
+noremap <F8> :TagbarToggle<CR>
 
 " Autocommands
 
