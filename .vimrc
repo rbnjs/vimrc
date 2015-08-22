@@ -65,6 +65,9 @@ Plugin 'bling/vim-airline'
 " Shows a window with tags
 Plugin 'majutsushi/tagbar'
 
+" Buffer Explorer.
+Plugin 'fholgado/minibufexpl.vim'
+ 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -77,7 +80,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Airline Configuration
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled=1
 let g:airline_theme='raven'
 
 syntax on
