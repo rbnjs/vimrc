@@ -8,8 +8,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Alternate files quickly
+Plugin 'vim-scripts/a.vim'
+
 " Search stuff 
 Plugin 'mileszs/ack.vim'
+
+" Vim plugin for vim
+Plugin 'vim-scripts/c.vim'
 
 " Plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
@@ -93,7 +99,7 @@ set mouse=a
 set number
 syntax enable
 set background=dark
-set hlsearch            " highlight matches
+"set hlsearch            " highlight matches
 set laststatus=2
 
 colorscheme desert
@@ -104,6 +110,8 @@ let g:session_autosave = 'no'
 " Mappings
 noremap <F6> :NERDTreeToggle<CR>
 noremap <F5> :NERDTree<CR>
+noremap <F8> :TagbarToggle<CR>
+noremap <F7> :MBEToggle<CR>
 inoremap <c-u> <esc>vwiU<esc>i
 " Changes an entire string. It's pretty cool.
 noremap <leader>cs <esc>v/"\\|'<cr>hc
@@ -113,7 +121,6 @@ noremap <leader>sv :source $MYVIMRC<cr>
 noremap <leader>y <esc>v$hy
 noremap <leader>bn :bnext<cr>
 noremap <leader>bp :bprevious<cr>
-noremap <F8> :TagbarToggle<CR>
 
 " Autocommands
 
