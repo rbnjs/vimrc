@@ -29,11 +29,17 @@ Plugin 'tpope/vim-endwise'
 " Vim with rvm
 Plugin 'tpope/vim-rvm'
 
+" Support for Haml, Sass, SCSS.
+Plugin 'tpope/vim-haml'
+
 " Checks for syntactics errors
 Plugin 'scrooloose/syntastic'
 
 " NERDTree a must have
 Plugin 'scrooloose/nerdtree'
+
+" Show colors in CSS files.
+Plugin 'ap/vim-css-color'
 
 " Standard library for vim-sessions
 Plugin 'xolox/vim-misc'
@@ -71,9 +77,6 @@ Plugin 'bling/vim-airline'
 " Shows a window with tags
 Plugin 'majutsushi/tagbar'
 
-" Buffer Explorer.
-Plugin 'fholgado/minibufexpl.vim'
- 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -121,6 +124,8 @@ noremap <leader>sv :source $MYVIMRC<cr>
 noremap <leader>y <esc>v$hy
 noremap <leader>bn :bnext<cr>
 noremap <leader>bp :bprevious<cr>
+" Changes directory to the current file's directory
+noremap <leader>cd :cd %:p:h<cr>
 
 " Autocommands
 
