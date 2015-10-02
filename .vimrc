@@ -77,6 +77,9 @@ Plugin 'bling/vim-airline'
 " Shows a window with tags
 Plugin 'majutsushi/tagbar'
 
+" Syntax for lex & bison
+Plugin 'justinmk/vim-syntax-extra'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -114,7 +117,6 @@ let g:session_autosave = 'no'
 noremap <F6> :NERDTreeToggle<CR>
 noremap <F5> :NERDTree<CR>
 noremap <F8> :TagbarToggle<CR>
-noremap <F7> :MBEToggle<CR>
 inoremap <c-u> <esc>vwiU<esc>i
 " Changes an entire string. It's pretty cool.
 noremap <leader>cs <esc>v/"\\|'<cr>hc
@@ -126,6 +128,7 @@ noremap <leader>bn :bnext<cr>
 noremap <leader>bp :bprevious<cr>
 " Changes directory to the current file's directory
 noremap <leader>cd :cd %:p:h<cr>
+noremap <leader>tn :tabnew<cr>
 
 " Autocommands
 
@@ -140,6 +143,11 @@ augroup END
 
 augroup ruby_files
   autocmd FileType ruby noremap <leader>c <esc>i#<esc>
+augroup END
+
+augroup c_files
+  autocmd FileType c set shiftwidth=4
+  autocmd FileType c set softtabstop=4
 augroup END
 
 " Color column.
