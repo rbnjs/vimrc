@@ -80,6 +80,12 @@ Plugin 'majutsushi/tagbar'
 " Syntax for lex & bison
 Plugin 'justinmk/vim-syntax-extra'
 
+" Align stuff
+Plugin 'godlygeek/tabular'
+
+" Assign commas or semicolons to files
+Plugin 'lfilho/cosco.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -90,6 +96,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Let :UltiSnipsEdit to split the window
 let g:UltiSnipsEditSplit="vertical"
+
+command! CommaOrSemiColon call cosco#commaOrSemiColon()
 
 " Airline Configuration
 let g:airline#extensions#tabline#enabled=1
