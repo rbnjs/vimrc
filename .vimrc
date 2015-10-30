@@ -80,6 +80,12 @@ Plugin 'majutsushi/tagbar'
 " Syntax for lex & bison
 Plugin 'justinmk/vim-syntax-extra'
 
+" Align text
+Plugin 'godlygeek/tabular'
+
+"Delete all trailigin white space
+Plugin 'vim-scripts/DeleteTrailingWhitespace'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -94,6 +100,9 @@ let g:UltiSnipsEditSplit="vertical"
 " Airline Configuration
 let g:airline#extensions#tabline#enabled=1
 let g:airline_theme='raven'
+
+" Syntastic configuration
+let g:syntastic_javascript_checkers = ['eslint']
 
 syntax on
 set expandtab
