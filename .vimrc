@@ -11,7 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 " Alternate files quickly
 Plugin 'vim-scripts/a.vim'
 
-" Search stuff 
+" Search stuff
 Plugin 'mileszs/ack.vim'
 
 " Vim plugin for vim
@@ -59,7 +59,7 @@ Plugin 'Townk/vim-autoclose'
 " Snippets Engine for Vim.
 Plugin 'SirVer/ultisnips'
 
-" Snippets 
+" Snippets
 Plugin 'honza/vim-snippets'
 
 " JavaScript bundle for Vim
@@ -73,6 +73,9 @@ Plugin 'groenewege/vim-less'
 
 " Status bar for vim
 Plugin 'bling/vim-airline'
+
+" Themes for the status bar.
+Plugin 'vim-airline/vim-airline-themes'
 
 " Shows a window with tags
 Plugin 'majutsushi/tagbar'
@@ -93,7 +96,7 @@ Plugin 'lfilho/cosco.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" Trigger configuration. 
+" Trigger configuration.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -134,13 +137,23 @@ noremap <F8> :TagbarToggle<CR>
 inoremap <c-u> <esc>vwiU<esc>i
 " Changes an entire string. It's pretty cool.
 noremap <leader>cs <esc>v/"\\|'<cr>hc
+noremap <leader>ys <esc>v/"\\|'<cr>hy
+" Copies or changes code until it find a bracket.
+noremap <leader>cb <esc>v/}<cr>hc
+noremap <leader>yb <esc>v/}<cr>hy
+" Copies or changes until it find the first parenthesis.
+noremap <leader>py <esc>v/)<cr>y
+noremap <leader>pc <esc>v/)<cr>c
+noremap <leader>ds :DeleteTrailingWhitespace<cr>
+" Vim files edit.
 noremap <leader>ew :vsplit $MYVIMRC<cr>
 noremap <leader>us :UltiSnipsEdit<cr>
 noremap <leader>sv :source $MYVIMRC<cr>
 noremap <leader>y <esc>v$hy
 noremap <leader>bn :bnext<cr>
 noremap <leader>bp :bprevious<cr>
-" Changes directory to the current file's directory
+
+" } Changes directory to the current file's directory
 noremap <leader>cd :cd %:p:h<cr>
 noremap <leader>tn :tabnew<cr>
 
@@ -150,8 +163,8 @@ noremap <leader>tn :tabnew<cr>
 augroup filetype_view
   autocmd BufNewFile,BufRead *.html setlocal nowrap
   autocmd BufNewFile,BufRead *.haml setlocal nowrap
-  autocmd BufNewFile,BufRead *.prawn set filetype=ruby 
-  autocmd BufNewFile,BufRead *.jbuilder set filetype=ruby 
+  autocmd BufNewFile,BufRead *.prawn set filetype=ruby
+  autocmd BufNewFile,BufRead *.jbuilder set filetype=ruby
 augroup END
 " }}}
 
