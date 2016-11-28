@@ -92,6 +92,9 @@ Plugin 'vim-scripts/DeleteTrailingWhitespace'
 " Assign commas or semicolons to files
 Plugin 'lfilho/cosco.vim'
 
+" Typescript for vim
+Plugin 'leafgarland/typescript-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
