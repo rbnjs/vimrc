@@ -86,11 +86,20 @@ Plugin 'justinmk/vim-syntax-extra'
 " Align text
 Plugin 'godlygeek/tabular'
 
+" Vim markdown plugin
+Plugin 'plasticboy/vim-markdown'
+
 "Delete all trailigin white space
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 
 " Assign commas or semicolons to files
 Plugin 'lfilho/cosco.vim'
+
+" Tern Support for Vim.
+Plugin 'ternjs/tern_for_vim'
+
+" Bash support for vim
+Plugin 'bash-support.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -152,10 +161,10 @@ noremap <leader>sv :source $MYVIMRC<cr>
 noremap <leader>y <esc>v$hy
 noremap <leader>bn :bnext<cr>
 noremap <leader>bp :bprevious<cr>
-
 " } Changes directory to the current file's directory
 noremap <leader>cd :cd %:p:h<cr>
 noremap <leader>tn :tabnew<cr>
+noremap <leader>qt :tabclose<cr>
 
 " Autocommands
 
@@ -184,3 +193,9 @@ if exists('+colorcolumn')
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
+
+let g:gv_use_dispatch = 0
+" Use vimux on Linux & dispatch on windows
+let g:gv_custom_cmd = has('unix') ?
+            \ ['VimuxRunCommand "clear && %s"', 1] :
+            \ 'Start! %s'
