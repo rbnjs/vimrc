@@ -53,9 +53,6 @@ Plugin 'kchmck/vim-coffee-script'
 " Automatic management of ctags
 Plugin 'szw/vim-tags'
 
-" Autoclose [], {}, ...
-Plugin 'Townk/vim-autoclose'
-
 " Snippets Engine for Vim.
 Plugin 'SirVer/ultisnips'
 
@@ -101,6 +98,14 @@ Plugin 'ternjs/tern_for_vim'
 " Bash support for vim
 Plugin 'bash-support.vim'
 
+if has("gui_running")
+  Plugin 'Valloric/YouCompleteMe'
+endif
+
+Plugin 'elixir-editors/vim-elixir'
+
+Plugin 'mustache/vim-mustache-handlebars'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -138,6 +143,9 @@ colorscheme desert
 
 let mapleader = ","
 let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
+let g:UltiSnipsExpandTrigger="<c-e>"
 
 " Mappings
 noremap <F6> :NERDTreeToggle<CR>
@@ -198,4 +206,4 @@ let g:gv_use_dispatch = 0
 " Use vimux on Linux & dispatch on windows
 let g:gv_custom_cmd = has('unix') ?
             \ ['VimuxRunCommand "clear && %s"', 1] :
-            \ 'Start! %s'
+\ 'Start! %s'
