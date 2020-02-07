@@ -8,32 +8,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Alternate files quickly
-Plugin 'vim-scripts/a.vim'
-
-" Search stuff
-Plugin 'mileszs/ack.vim'
-
-" Vim plugin for vim
-Plugin 'vim-scripts/c.vim'
-
 " Plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
-" Plugin for rails development
-Plugin 'tpope/vim-rails'
-
 " It completes the ends in Ruby
 Plugin 'tpope/vim-endwise'
-
-" Vim with rvm
-Plugin 'tpope/vim-rvm'
-
-" Support for Haml, Sass, SCSS.
-Plugin 'tpope/vim-haml'
-
-" Checks for syntactics errors
-Plugin 'scrooloose/syntastic'
 
 " NERDTree a must have
 Plugin 'scrooloose/nerdtree'
@@ -46,9 +25,6 @@ Plugin 'xolox/vim-misc'
 
 " Vim sessions on steroids.
 Plugin 'xolox/vim-session'
-
-" CoffeeScript with vim
-Plugin 'kchmck/vim-coffee-script'
 
 " Automatic management of ctags
 Plugin 'szw/vim-tags'
@@ -83,9 +59,6 @@ Plugin 'justinmk/vim-syntax-extra'
 " Align text
 Plugin 'godlygeek/tabular'
 
-" Vim markdown plugin
-Plugin 'plasticboy/vim-markdown'
-
 "Delete all trailigin white space
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 
@@ -98,20 +71,44 @@ Plugin 'ternjs/tern_for_vim'
 " Bash support for vim
 Plugin 'bash-support.vim'
 
-if has("gui_running")
-  Plugin 'Valloric/YouCompleteMe'
-endif
+Plugin 'morhetz/gruvbox'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'hashivim/vim-terraform'
+
+Plugin 'juliosueiras/vim-terraform-completion'
 
 Plugin 'elixir-editors/vim-elixir'
 
+Plugin 'slashmili/alchemist.vim'
+
 Plugin 'mustache/vim-mustache-handlebars'
+
+Plugin 'tpope/vim-fireplace'
+
+Plugin 'vim-scripts/paredit.vim'
+
+Plugin 'leafgarland/typescript-vim' 
+
+Plugin 'peitalin/vim-jsx-typescript'
+
+Plugin 'tpope/vim-salve'
+
+Plugin 'fatih/vim-go'
+
+Plugin 'godoctor/godoctor.vim'
+
+Plugin 'tpope/vim-dispatch'
+
+Plugin 'ararslan/license-to-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Trigger configuration.
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Let :UltiSnipsEdit to split the window
@@ -121,10 +118,18 @@ command! CommaOrSemiColon call cosco#commaOrSemiColon()
 
 " Airline Configuration
 let g:airline#extensions#tabline#enabled=1
-let g:airline_theme='raven'
+let g:airline_theme='gruvbox'
 
 " Syntastic configuration
 let g:syntastic_javascript_checkers = ['eslint']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 syntax on
 set expandtab
@@ -139,16 +144,17 @@ set background=dark
 "set hlsearch            " highlight matches
 set laststatus=2
 
-colorscheme desert
+colorscheme gruvbox
 
 let mapleader = ","
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-let g:UltiSnipsExpandTrigger="<c-e>"
+let g:license_author = 'Ruben Serradas'
+let g:license_email = 'rubenserradas@gmail.com'
 
 " Mappings
-noremap <F6> :NERDTreeToggle<CR>
+noremap <leader>nt :NERDTreeToggle<CR>
 noremap <F5> :NERDTree<CR>
 noremap <F8> :TagbarToggle<CR>
 inoremap <c-u> <esc>vwiU<esc>i
@@ -194,16 +200,29 @@ augroup c_files
   autocmd FileType c set softtabstop=4
 augroup END
 
+augroup html
+  autocmd FileType html set shiftwidth=4
+  autocmd FileType html set softtabstop=4
+augroup END
+
+augroup java_files
+  autocmd FileType java set shiftwidth=4
+  autocmd FileType java set softtabstop=4
+augroup END
+
+augroup go_files
+  autocmd FileType go set shiftwidth=4
+  autocmd FileType go set softtabstop=4
+augroup END
+
 " Color column.
 if exists('+colorcolumn')
-  set colorcolumn=80
+  if &filetype ==# 'rb' || &filetype ==# 'ex'
+    set colorcolumn=80
+  endif
+  set colorcolumn=150
   highlight ColorColumn ctermbg=7
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-let g:gv_use_dispatch = 0
-" Use vimux on Linux & dispatch on windows
-let g:gv_custom_cmd = has('unix') ?
-            \ ['VimuxRunCommand "clear && %s"', 1] :
-\ 'Start! %s'
