@@ -1,111 +1,112 @@
-" Vundle Configuration
-set nocompatible              " be iMproved, required
-filetype off                  " required
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
+call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plug 'gmarik/Vundle.vim'
 
-" Plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+" Plug on GitHub repo
+Plug 'tpope/vim-fugitive'
 
 " It completes the ends in Ruby
-Plugin 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 
 " NERDTree a must have
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Show colors in CSS files.
-Plugin 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 
 " Standard library for vim-sessions
-Plugin 'xolox/vim-misc'
+Plug 'xolox/vim-misc'
 
 " Vim sessions on steroids.
-Plugin 'xolox/vim-session'
+Plug 'xolox/vim-session'
 
 " Automatic management of ctags
-Plugin 'szw/vim-tags'
+Plug 'szw/vim-tags'
 
 " Snippets Engine for Vim.
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 " Snippets
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 " JavaScript bundle for Vim
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 " JSX for Vim
-Plugin 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 
 " Less Vim
-Plugin 'groenewege/vim-less'
+Plug 'groenewege/vim-less'
+
+Plug 'dpelle/vim-LanguageTool'
 
 " Status bar for vim
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 " Themes for the status bar.
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 
 " Shows a window with tags
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " Syntax for lex & bison
-Plugin 'justinmk/vim-syntax-extra'
+Plug 'justinmk/vim-syntax-extra'
 
 " Align text
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 
 "Delete all trailigin white space
-Plugin 'vim-scripts/DeleteTrailingWhitespace'
+Plug 'vim-scripts/DeleteTrailingWhitespace'
 
 " Assign commas or semicolons to files
-Plugin 'lfilho/cosco.vim'
+Plug 'lfilho/cosco.vim'
 
 " Tern Support for Vim.
-Plugin 'ternjs/tern_for_vim'
+Plug 'ternjs/tern_for_vim'
 
-" Bash support for vim
-Plugin 'bash-support.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
-Plugin 'morhetz/gruvbox'
+Plug 'sheerun/vim-polyglot'
 
-Plugin 'Valloric/YouCompleteMe'
+Plug 'hashivim/vim-terraform'
 
-Plugin 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 
-Plugin 'juliosueiras/vim-terraform-completion'
+Plug 'elixir-editors/vim-elixir'
 
-Plugin 'elixir-editors/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 
-Plugin 'slashmili/alchemist.vim'
+Plug 'mustache/vim-mustache-handlebars'
 
-Plugin 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-rails'
 
-Plugin 'tpope/vim-fireplace'
+Plug 'vim-scripts/paredit.vim'
 
-Plugin 'vim-scripts/paredit.vim'
+Plug 'leafgarland/typescript-vim' 
 
-Plugin 'leafgarland/typescript-vim' 
+Plug 'peitalin/vim-jsx-typescript'
 
-Plugin 'peitalin/vim-jsx-typescript'
+Plug 'tpope/vim-salve'
 
-Plugin 'tpope/vim-salve'
+Plug 'fatih/vim-go'
 
-Plugin 'fatih/vim-go'
+Plug 'godoctor/godoctor.vim'
 
-Plugin 'godoctor/godoctor.vim'
+Plug 'tpope/vim-dispatch'
 
-Plugin 'tpope/vim-dispatch'
+Plug 'ararslan/license-to-vim'
 
-Plugin 'ararslan/license-to-vim'
+call plug#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+let g:deoplete#enable_at_startup = 1
 
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger="<c-e>"
@@ -118,7 +119,7 @@ command! CommaOrSemiColon call cosco#commaOrSemiColon()
 
 " Airline Configuration
 let g:airline#extensions#tabline#enabled=1
-let g:airline_theme='gruvbox'
+let g:airline_theme='tomorrow'
 
 " Syntastic configuration
 let g:syntastic_javascript_checkers = ['eslint']
@@ -144,7 +145,7 @@ set background=dark
 "set hlsearch            " highlight matches
 set laststatus=2
 
-colorscheme gruvbox
+colorscheme desert
 
 let mapleader = ","
 let g:session_autosave = 'no'
@@ -215,6 +216,9 @@ augroup go_files
   autocmd FileType go set softtabstop=4
 augroup END
 
+autocmd FileType markdown setlocal spell
+autocmd FileType markdown.mdx setlocal spell
+
 " Color column.
 if exists('+colorcolumn')
   if &filetype ==# 'rb' || &filetype ==# 'ex'
@@ -225,4 +229,3 @@ if exists('+colorcolumn')
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
-
